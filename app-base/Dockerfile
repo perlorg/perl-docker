@@ -1,4 +1,4 @@
-FROM ntp-baseos
+FROM quay.io/ntppool/base-os
 
 RUN yum install -y npm; yum clean all
 
