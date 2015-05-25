@@ -11,7 +11,7 @@ RUN cpanm -n < /tmp/.modules
 RUN npm config set jobs 1
 RUN npm install -g hogan.js
 
-RUN rpm -e gcc cpp gpgme gnupg2 ppl cloog-ppl gcc-c++ MariaDB-devel libstdc++-devel \
+RUN rpm -e gcc cpp ppl cloog-ppl gcc-c++ MariaDB-devel libstdc++-devel \
    npm node-gyp
 
 RUN rpm -qa --queryformat '%{NAME}\n'  | grep -- '-devel$'  |xargs rpm -e
