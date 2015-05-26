@@ -7,10 +7,8 @@ RUN yum install -y npm git which; yum clean all
 ADD perl-modules /tmp/.modules
 
 # install all the cpan stuff we need
-RUN cpanm  DBI DBD::mysql
-RUN cpanm -n LWP::Protocol::https
-RUN cpanm -n < /tmp/.modules
-RUN rm -fr ~/.cpanm
+RUN cpanm  DBI DBD::mysql; rm -fr ~/.cpanm
+RUN cpanm -n < /tmp/.modules; rm -fr ~/.cpanm
 
 # install "hulk" to compile the admin templates
 RUN npm config set jobs 1
