@@ -16,9 +16,8 @@ RUN npm install -g hogan.js
 
 # cleanup rpm's we don't need in production 
 RUN rpm -e gcc cpp ppl cloog-ppl gcc-c++ MariaDB-devel libstdc++-devel \
-   npm node-gyp
-
-RUN rpm -qa --queryformat '%{NAME}\n'  | grep -- '-devel$'  |xargs rpm -e
+   npm node-gyp; \
+   rpm -qa --queryformat '%{NAME}\n'  | grep -- '-devel$'  |xargs rpm -e
 
 ENV CBROOTLOCAL=/ntppool/
 ENV CBROOT=/ntppool/combust
