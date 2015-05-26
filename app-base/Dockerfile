@@ -28,4 +28,4 @@ WORKDIR /ntppool
 
 EXPOSE 8299
 
-CMD /bin/bash
+CMD ./docker-run
