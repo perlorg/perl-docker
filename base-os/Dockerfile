@@ -1,4 +1,4 @@
-FROM centos:centos6.6
+FROM centos:centos6.7
 ADD mariadb.repo /etc/yum.repos.d/
 RUN yum -y install epel-release; yum -y update; yum clean all
 RUN yum -y install perl GeoIP-devel cronolog tar bzip2 gcc patch \
