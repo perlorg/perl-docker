@@ -3,6 +3,7 @@ Cache::Memcached
 Class::Accessor::Class
 Config::General
 Config::Simple
+Crypt::JWT
 DBI
 DBD::mysql
 Data::Dumper
