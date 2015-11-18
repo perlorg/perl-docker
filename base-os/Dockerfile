@@ -1,8 +1,9 @@
 FROM centos:centos6.7
 ADD mariadb.repo /etc/yum.repos.d/
-RUN yum -y install epel-release; yum -y update; yum clean all
-RUN yum -y install perl GeoIP-devel cronolog tar bzip2 gcc patch \
-  MariaDB-devel MariaDB-compat MariaDB-client zlib zlib-devel openssl-devel; yum clean all
+RUN yum -y install epel-release; yum -y upgrade; \
+    yum -y install perl GeoIP-devel cronolog tar bzip2 gcc patch \
+    MariaDB-devel MariaDB-compat MariaDB-client zlib zlib-devel openssl-devel; \
+    yum clean all
 ENV PERLBREW_ROOT=/perl5
 RUN curl -L http://install.perlbrew.pl | bash
 
