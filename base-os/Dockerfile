@@ -1,4 +1,4 @@
-FROM centos:centos6.7
+FROM centos:centos6
 ADD mariadb.repo /etc/yum.repos.d/
 RUN yum -y install epel-release; yum -y upgrade; \
     yum -y install perl GeoIP-devel cronolog tar bzip2 gcc patch \
@@ -7,7 +7,7 @@ RUN yum -y install epel-release; yum -y upgrade; \
 ENV PERLBREW_ROOT=/perl5
 RUN curl -L http://install.perlbrew.pl | bash
 
-ENV PERLBREW_PERL=perl-5.21.1
+ENV PERLBREW_PERL=perl-5.22.2
 ENV PATH=/perl5/bin:/perl5/perls/${PERLBREW_PERL}/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV PERLBREW_MANPATH=/perl5/perls/${PERLBREW_PERL}/man
 ENV PERLBREW_PATH=/perl5/bin:/perl5/perls/${PERLBREW_PERL}/bin
