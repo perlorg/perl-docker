@@ -2,7 +2,7 @@ FROM quay.io/ntppool/base-os
 
 # npm for hulk (hogan.js)
 # git and which to start the combust app
-RUN yum install -y npm git which; yum clean all
+RUN yum install -y npm git which fontconfig; yum clean all
 
 ADD perl-modules /tmp/.modules
 
