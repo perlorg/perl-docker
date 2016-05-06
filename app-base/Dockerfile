@@ -19,7 +19,7 @@ RUN rpm -e gcc cpp ppl cloog-ppl gcc-c++ MariaDB-devel libstdc++-devel \
    npm node-gyp; \
    rpm -qa --queryformat '%{NAME}\n'  | grep -- '-devel$'  |xargs rpm -e
 
-RUN curl -Lo /tmp/phantomjs.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2; mkdir /usr/local/phantomjs; tar -xvjf -C /usr/local /tmp/phantomjs.bz2; mv phantomjs-2.1.1-linux-x86_64 phantomjs
+RUN curl -Lo /tmp/phantomjs.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2; mkdir /usr/local/phantomjs; tar -xvj -C /usr/local -f /tmp/phantomjs.bz2; mv phantomjs-2.1.1-linux-x86_64 phantomjs
 
 ENV CBROOTLOCAL=/ntppool/
 ENV CBROOT=/ntppool/combust
