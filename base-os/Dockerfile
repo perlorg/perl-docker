@@ -1,7 +1,8 @@
+FROM centos:centos6
+
 # Cache buster for occasionally resetting the cached images for the yum commands
 ENV LAST_UPDATED 2016-05-05
 
-FROM centos:centos6
 ADD mariadb.repo /etc/yum.repos.d/
 RUN yum -y install epel-release; yum -y upgrade; \
     yum -y install perl GeoIP-devel cronolog tar bzip2 gcc patch \
