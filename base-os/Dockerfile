@@ -1,7 +1,7 @@
 FROM centos:centos6
 
 # Cache buster for occasionally resetting the cached images for the yum commands
-ENV LAST_UPDATED 2016-05-05
+ENV LAST_UPDATED 2016-07-19
 
 ADD mariadb.repo /etc/yum.repos.d/
 RUN yum -y install epel-release; yum -y upgrade; \
