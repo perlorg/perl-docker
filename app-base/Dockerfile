@@ -14,10 +14,10 @@ RUN cpanm -n < /tmp/.modules; rm -fr ~/.cpanm
 RUN npm config set jobs 1
 RUN npm install -g hogan.js
 
-# cleanup rpm's we don't need in production 
-RUN rpm -e gcc cpp ppl cloog-ppl gcc-c++ MariaDB-devel libstdc++-devel \
-   npm node-gyp; \
-   rpm -qa --queryformat '%{NAME}\n'  | grep -- '-devel$'  |xargs rpm -e
+# leave the development parts of the image; they're already baked in anyway.
+#RUN rpm -e gcc cpp ppl cloog-ppl gcc-c++ MariaDB-devel libstdc++-devel \
+#   npm node-gyp; \
+#   rpm -qa --queryformat '%{NAME}\n'  | grep -- '-devel$'  |xargs rpm -e
 
 RUN cd /usr/local; curl -Lo /tmp/phantomjs.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2; tar -xvjf /tmp/phantomjs.bz2; mv phantomjs-2.1.1-linux-x86_64 phantomjs
 
