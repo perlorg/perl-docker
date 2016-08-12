@@ -2,7 +2,7 @@ FROM quay.io/ntppool/base-os
 
 # npm for hulk (hogan.js)
 # git and which to start the combust app
-RUN yum install -y npm git which fontconfig; yum clean all
+RUN yum install -y npm which fontconfig; yum clean all
 
 ADD perl-modules /tmp/.modules
 
@@ -12,7 +12,7 @@ RUN cpanm -n < /tmp/.modules; rm -fr ~/.cpanm
 
 # install "hulk" to compile the admin templates
 RUN npm config set jobs 1
-RUN npm install -g hogan.js
+RUN npm install -g hogan.js gulp-cli source-map-support
 
 # leave the development parts of the image; they're already baked in anyway.
 #RUN rpm -e gcc cpp ppl cloog-ppl gcc-c++ MariaDB-devel libstdc++-devel \
