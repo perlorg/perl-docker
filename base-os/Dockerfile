@@ -5,7 +5,7 @@ ENV LAST_UPDATED 2016-08-05
 
 ADD mariadb.repo /etc/yum.repos.d/
 RUN yum -y install epel-release; yum -y upgrade; \
-    yum -y install perl GeoIP-devel cronolog tar bzip2 gcc patch \
+    yum -y install perl GeoIP-devel cronolog tar bzip2 gcc patch go \
     MariaDB-devel MariaDB-compat MariaDB-client zlib zlib-devel openssl-devel; \
     yum clean all
 ENV PERLBREW_ROOT=/perl5
