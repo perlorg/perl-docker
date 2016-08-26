@@ -7,8 +7,8 @@ RUN yum install -y npm which fontconfig; yum clean all
 ADD perl-modules /tmp/.modules
 
 # install all the cpan stuff we need
-RUN cpanm  DBI DBD::mysql; rm -fr ~/.cpanm
-RUN cpanm -n < /tmp/.modules; rm -fr ~/.cpanm
+RUN cpanm  DBI DBD::mysql; \
+    cpanm -n < /tmp/.modules; rm -fr ~/.cpanm; rm -fr /perl5/perls/perl-*/man
 
 # install "hulk" to compile the admin templates
 RUN npm config set jobs 1
