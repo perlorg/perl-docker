@@ -26,7 +26,6 @@ RUN /perl5/bin/perlbrew switch ${PERLBREW_PERL}
 
 ENV PERLBREW_SKIP_INIT=1
 
-
 RUN curl -fo /tmp/go.tar.gz https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz && \
   tar -C /usr/local -xzf /tmp/go.tar.gz; rm /tmp/go.tar.gz
 
