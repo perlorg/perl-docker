@@ -26,6 +26,8 @@ ENV CBROOT=/ntppool/combust
 ENV CBCONFIG=/ntppool/combust.docker.conf
 
 VOLUME /ntppool
+VOLUME /go
+
 WORKDIR /ntppool
 
 EXPOSE 8299

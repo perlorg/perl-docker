@@ -5,7 +5,7 @@ ENV LAST_UPDATED 2016-08-05
 
 ADD mariadb.repo /etc/yum.repos.d/
 RUN yum -y install epel-release; yum -y upgrade; \
-    yum -y install perl GeoIP-devel cronolog tar bzip2 gcc patch go \
+    yum -y install perl GeoIP-devel cronolog tar bzip2 gcc patch \
       git openssl-devel \
       MariaDB-devel MariaDB-compat MariaDB-client zlib zlib-devel; \
     yum clean all
@@ -13,7 +13,9 @@ ENV PERLBREW_ROOT=/perl5
 RUN curl -L http://install.perlbrew.pl | bash
 
 ENV PERLBREW_PERL=perl-5.22.2
-ENV PATH=/perl5/bin:/perl5/perls/${PERLBREW_PERL}/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH=/perl5/bin:/perl5/perls/${PERLBREW_PERL}/bin:$PATH
 ENV PERLBREW_MANPATH=/perl5/perls/${PERLBREW_PERL}/man
 ENV PERLBREW_PATH=/perl5/bin:/perl5/perls/${PERLBREW_PERL}/bin
 
@@ -23,3 +25,10 @@ RUN /perl5/bin/perlbrew install-cpanm
 RUN /perl5/bin/perlbrew switch ${PERLBREW_PERL}
 
 ENV PERLBREW_SKIP_INIT=1
+
+
+RUN curl -fo /tmp/go.tar.gz https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz && \
+  tar -C /usr/local -xzf /tmp/go.tar.gz; rm /tmp/go.tar.gz
+
+ENV GOPATH=/go
+ENV PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
