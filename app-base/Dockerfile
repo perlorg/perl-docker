@@ -18,6 +18,7 @@ RUN npm install -g hogan.js gulp-cli source-map-support
 RUN cd /usr/local; curl -Lo /tmp/phantomjs.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2; tar -xvjf /tmp/phantomjs.bz2; mv phantomjs-2.1.1-linux-x86_64 phantomjs
 
 ADD wait-for-it.sh /usr/bin/
+RUN go get -u github.com/jwilder/dockerize
 
 ENV CBROOTLOCAL=/ntppool/
 ENV CBROOT=/ntppool/combust
