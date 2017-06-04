@@ -1,0 +1,52 @@
+#!/usr/bin/env perl
+use strict;
+use LWP::Simple qw(mirror);
+use File::Basename qw(basename);
+
+my $path = shift || '/usr/share/GeoIP';
+$path .= "/" unless $path =~ m{/$};
+
+my @files = qw(
+	       http://geolite.maxmind.com/download/geoip/database/GeoIPv6.dat.gz
+	       http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
+	       http://geolite.maxmind.com/download/geoip/database/GeoLiteCityv6-beta/GeoLiteCityv6.dat.gz
+	       http://download.maxmind.com/download/geoip/database/asnum/GeoIPASNum.dat.gz
+	       http://download.maxmind.com/download/geoip/database/asnum/GeoIPASNumv6.dat.gz
+	       );
+
+
+for my $url (@files) {
+    my $file       = basename($url);
+    my ($dat_name) = ($file =~ m/(.*)\.gz/);
+    my $rv         = mirror($url, "$path/$file");
+    if ($rv == 200) {
+        run("gzip -cd $path/$file > $path/$dat_name.tmp", {silent=>1});
+	rename("$path/$dat_name.tmp", "$path/$dat_name") or die "Could not rename: $!";
+    }
+    elsif ($rv == 304) {
+        # already updated
+    }
+    else {
+        print "$url:", $rv, "\n";
+    }
+}
+
+
+sub run {
+    my @ar = @_;
+    my $parms = ref $ar[-1] eq "HASH" ? pop @ar : {};
+
+    print "Running: ", join(" ", @ar), "\n" unless $parms->{silent};
+
+    return 1 if system(@ar) == 0;
+
+    my $exit_value = $? >> 8;
+    return 0
+	if $parms->{fail_silent_if}
+    && $exit_value == $parms->{fail_silent_if};
+
+    my $msg = "system @ar failed: $exit_value ($?)";
+    croak($msg) unless $parms->{failok};
+    print "$msg\n";
+    return 0;
+}
