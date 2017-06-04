@@ -1,33 +1,53 @@
-FROM centos:centos6
+FROM alpine:3.6
 
 # Cache buster for occasionally resetting the cached images for the yum commands
-ENV LAST_UPDATED 2016-08-27
+ENV LAST_UPDATED 2017-06-03
 
-ADD mariadb.repo /etc/yum.repos.d/
-RUN yum -y install epel-release; yum -y upgrade; \
-    yum -y install perl GeoIP-devel cronolog tar bzip2 gcc patch \
-      git openssl-devel \
-      MariaDB-devel MariaDB-compat MariaDB-client zlib zlib-devel; \
-    yum clean all
-ENV PERLBREW_ROOT=/perl5
-RUN curl -L http://install.perlbrew.pl | bash
+RUN \
+  echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories; \
+  apk update; apk upgrade;
+  apk add confd@testing; \
+  apk add curl git \
+  perl-dev wget make bash build-base \
+  jq \
+  geoip-dev expat-dev zlib-dev \
+  libressl-dev libressl \
+  mariadb-client mariadb-client-libs mariadb-dev \
+  nodejs-npm fontconfig
 
-ENV PERLBREW_PERL=perl-5.22.2
+RUN curl -sfLo /usr/bin/cpanm https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm; chmod a+x /usr/bin/cpanm
 
-ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-ENV PATH=/perl5/bin:/perl5/perls/${PERLBREW_PERL}/bin:$PATH
-ENV PERLBREW_MANPATH=/perl5/perls/${PERLBREW_PERL}/man
-ENV PERLBREW_PATH=/perl5/bin:/perl5/perls/${PERLBREW_PERL}/bin
+ADD perl-modules /tmp/.modules
 
-RUN /perl5/bin/perlbrew init
-RUN /perl5/bin/perlbrew install -j 4 ${PERLBREW_PERL}; perlbrew clean; rm -fr /perl5/perls/perl-*/man
-RUN /perl5/bin/perlbrew install-cpanm
-RUN /perl5/bin/perlbrew switch ${PERLBREW_PERL}
+USER root
 
-ENV PERLBREW_SKIP_INIT=1
+# install all the cpan stuff we need
+RUN cpanm  DBI DBD::mysql; \
+    cpanm -n < /tmp/.modules; rm -fr ~/.cpanm; rm -fr /usr/local/share/man;
 
-RUN curl -fo /tmp/go.tar.gz https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz && \
-  tar -C /usr/local -xzf /tmp/go.tar.gz; rm /tmp/go.tar.gz
+# install "hulk" to compile the admin templates
+RUN npm config set jobs 1
+RUN npm install -g hogan.js gulp-cli source-map-support
 
-ENV GOPATH=/go
-ENV PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+# phantomjs for making .png graph images
+RUN cd /usr/local; curl -Lo /tmp/phantomjs.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2; tar -xvjf /tmp/phantomjs.bz2; mv phantomjs-2.1.1-linux-x86_64 phantomjs; rm /tmp/phantomjs.bz2
+
+ADD wait-for-it.sh /usr/bin/
+
+#RUN go get -u github.com/jwilder/dockerize
+
+ENV CBROOTLOCAL=/ntppool/
+ENV CBROOT=/ntppool/combust
+ENV CBCONFIG=/ntppool/combust.docker.conf
+
+WORKDIR /ntppool
+
+RUN addgroup ntppool && adduser -D -G ntppool ntppool
+
+USER ntppool
+
+EXPOSE 8299
+
+USER ntppool
+
+#CMD ./docker-run
