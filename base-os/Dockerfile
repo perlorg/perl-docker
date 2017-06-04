@@ -5,7 +5,7 @@ ENV LAST_UPDATED 2017-06-03
 
 RUN \
   echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories; \
-  apk update; apk upgrade;
+  apk update; apk upgrade; \
   apk add confd@testing; \
   apk add curl git \
   perl-dev wget make bash build-base \
