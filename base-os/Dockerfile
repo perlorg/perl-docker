@@ -45,7 +45,6 @@ RUN /usr/bin/geoipupdate-lite
 
 ENV CBROOTLOCAL=/ntppool/
 ENV CBROOT=/ntppool/combust
-ENV CBCONFIG=/ntppool/combust.docker.conf
 
 WORKDIR /ntppool
 
