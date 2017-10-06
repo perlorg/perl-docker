@@ -36,6 +36,7 @@ Net::IP
 Net::NTP
 Plack
 Plack::Middleware::AccessLog
+Plack::Middleware::AccessLog::Timed
 Plack::Middleware::Options
 Plack::Middleware::ReverseProxy
 Plack::Middleware::XForwardedFor
