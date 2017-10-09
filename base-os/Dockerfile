@@ -31,7 +31,7 @@ RUN npm install -g \
   hogan.js gulp-cli source-map-support \
   uglify-js \
   csso csso-cli \
-  && chown -R root:root /usr/lib/node_modules
+  && chown -R root:root /usr/lib/node_modules && rm -fr ~/.npm
 
 ADD wait-for-it.sh /usr/bin/
 ADD geoipupdate-lite /usr/bin/
