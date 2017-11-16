@@ -6,7 +6,7 @@ ENV LAST_UPDATED 2017-10-20
 RUN \
   echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories; \
   apk update; apk upgrade; \
-  apk add confd@testing gosu@testing; \
+  apk add gosu@testing; \
   apk add curl git \
   perl-dev wget make bash build-base \
   jq rsync \
@@ -15,7 +15,11 @@ RUN \
   mariadb-client mariadb-client-libs mariadb-dev \
   nodejs-npm fontconfig
 
-RUN curl -sfLo /usr/bin/cpanm https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm; chmod a+x /usr/bin/cpanm
+RUN curl -sfLo /usr/bin/cpanm https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm && chmod a+x /usr/bin/cpanm
+
+RUN curl -sfLo /usr/bin/confd \
+   https://github.com/kelseyhightower/confd/releases/download/v0.14.0/confd-0.14.0-linux-amd64 && \
+   chmod a+x /usr/bin/confd
 
 ADD perl-modules /tmp/.modules
 
