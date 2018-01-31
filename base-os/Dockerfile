@@ -1,7 +1,7 @@
-FROM alpine:3.6
+FROM alpine:3.7
 
 # Cache buster for occasionally resetting the cached images for the yum commands
-ENV LAST_UPDATED 2017-11-28
+ENV LAST_UPDATED 2018-01-30
 
 RUN \
   echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories; \
@@ -18,7 +18,7 @@ RUN \
 RUN curl -sfLo /usr/bin/cpanm https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm && chmod a+x /usr/bin/cpanm
 
 RUN curl -sfLo /usr/bin/confd \
-   https://github.com/kelseyhightower/confd/releases/download/v0.14.0/confd-0.14.0-linux-amd64 && \
+   https://github.com/kelseyhightower/confd/releases/download/v0.15.0/confd-0.15.0-linux-amd64 && \
    chmod a+x /usr/bin/confd
 
 ADD perl-modules /tmp/.modules
