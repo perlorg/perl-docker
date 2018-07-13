@@ -1,7 +1,7 @@
-FROM alpine:3.7
+FROM alpine:3.8
 
 # Cache buster for occasionally resetting the cached images for the yum commands
-ENV LAST_UPDATED 2018-05-29
+ENV LAST_UPDATED 2018-07-12
 
 RUN \
   echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories; \
@@ -12,7 +12,7 @@ RUN \
   jq rsync \
   geoip-dev expat-dev zlib-dev \
   libressl-dev libressl \
-  mariadb-client mariadb-client-libs mariadb-dev \
+  mariadb-client mariadb-connector-c mariadb-dev \
   nodejs-npm fontconfig
 
 RUN curl -sfLo /usr/bin/cpanm https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm && chmod a+x /usr/bin/cpanm
