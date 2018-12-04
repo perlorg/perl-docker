@@ -21,17 +21,9 @@ RUN curl -sfLo /usr/bin/confd \
    https://github.com/kelseyhightower/confd/releases/download/v0.15.0/confd-0.15.0-linux-amd64 && \
    chmod a+x /usr/bin/confd
 
-ADD patch-dbdimp.c /root/
-
 RUN cpanm Devel::CheckLib HTTP::Date LWP::Simple DBI CPAN && rm -fr ~/.cpanm
 
-RUN cpan  < /dev/null ; \
-   mkdir -p /tmp/dbd ; cd /tmp/dbd ; \
-   cpan -g DBD::mysql ; \
-   tar xvzf DBD-mysql*.tar.gz && rm *.tar.gz && cd DBD-mysql* && \
-   patch -p0 < /root/patch-dbdimp.c && perl Makefile.PL && make -j2 && make install ; \
-   rm -fr ~/.cpan
-
+RUN cpanm -n DBD::mysql && rm -fr ~/.cpanm
 RUN perl -MDBD::mysql -e ''
 
 ADD perl-modules /tmp/.modules
