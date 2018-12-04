@@ -13,7 +13,7 @@ RUN \
   geoip-dev expat-dev zlib-dev \
   libressl-dev libressl \
   mariadb-client mariadb-connector-c mariadb-dev \
-  nodejs-npm fontconfig
+  nodejs-npm fontconfig tzdata
 
 RUN curl -sfLo /usr/bin/cpanm https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm && chmod a+x /usr/bin/cpanm
 
