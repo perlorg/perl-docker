@@ -44,8 +44,6 @@ Pod::Simple
 Return::Value
 Rose::DB::Object
 Router::Simple
-Socket6
-IO::Socket::INET6
 Starman
 Template
 Template::Plugin::Comma
