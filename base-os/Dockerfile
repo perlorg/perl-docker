@@ -1,7 +1,7 @@
-FROM alpine:3.8
+FROM alpine:3.9
 
 # Cache buster for occasionally resetting the cached images for the yum commands
-ENV LAST_UPDATED 2018-12-03
+ENV LAST_UPDATED 2019-02-21
 
 RUN \
   echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories; \
@@ -11,7 +11,7 @@ RUN \
   perl-dev wget make bash build-base \
   jq rsync \
   geoip-dev expat-dev zlib-dev \
-  libressl-dev libressl \
+  openssl-dev openssl \
   mariadb-client mariadb-connector-c mariadb-dev \
   nodejs-npm fontconfig tzdata
 
