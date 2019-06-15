@@ -1,7 +1,7 @@
-FROM alpine:3.9
+FROM alpine:3.9.4
 
 # Cache buster for occasionally resetting the cached images for the yum commands
-ENV LAST_UPDATED 2019-04-19
+ENV LAST_UPDATED 2019-06-15
 
 RUN \
   echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories; \
