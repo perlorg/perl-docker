@@ -4,9 +4,7 @@ FROM alpine:3.9.4
 ENV LAST_UPDATED 2019-06-15
 
 RUN \
-  echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories; \
-  apk --no-cache update; apk --no-cache upgrade; \
-  apk --no-cache add gosu@testing; \
+  apk --no-cache update && apk --no-cache upgrade && \
   apk --no-cache add curl git \
   perl-dev wget make bash build-base \
   jq rsync \
@@ -14,6 +12,10 @@ RUN \
   openssl-dev openssl \
   mariadb-client mariadb-connector-c mariadb-dev \
   nodejs-npm fontconfig tzdata
+
+RUN \
+  echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories-test; \
+  apk --no-cache --repositories-file /etc/apk/repositories-test add gosu@testing;
 
 RUN curl -sfLo /usr/bin/cpanm https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm && chmod a+x /usr/bin/cpanm
 
