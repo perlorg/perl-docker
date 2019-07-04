@@ -1,7 +1,7 @@
-FROM alpine:3.9.4
+FROM alpine:3.10
 
 # Cache buster for occasionally resetting the cached images for the yum commands
-ENV LAST_UPDATED 2019-06-15
+ENV LAST_UPDATED 2019-07-04
 
 RUN \
   apk --no-cache update && apk --no-cache upgrade && \
