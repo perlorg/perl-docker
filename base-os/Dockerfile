@@ -13,14 +13,14 @@ RUN \
   mariadb-client mariadb-connector-c mariadb-dev \
   nodejs-npm fontconfig tzdata
 
-RUN \
-  echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories-test; \
-  apk --no-cache --repositories-file /etc/apk/repositories-test add gosu@testing;
+#RUN \
+#  echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories-test; \
+#  apk --no-cache --repositories-file /etc/apk/repositories-test add gosu@testing;
 
 RUN curl -sfLo /usr/bin/cpanm https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm && chmod a+x /usr/bin/cpanm
 
 RUN curl -sfLo /usr/bin/confd \
-   https://github.com/kelseyhightower/confd/releases/download/v0.15.0/confd-0.15.0-linux-amd64 && \
+   https://github.com/kelseyhightower/confd/releases/download/v0.16.0/confd-0.16.0-linux-amd64 && \
    chmod a+x /usr/bin/confd
 
 RUN cpanm Devel::CheckLib HTTP::Date LWP::Simple DBI CPAN && rm -fr ~/.cpanm
