@@ -1,7 +1,7 @@
 FROM alpine:3.10
 
 # Cache buster for occasionally resetting the cached images for the yum commands
-ENV LAST_UPDATED 2019-07-04
+ENV LAST_UPDATED 2019-11-04
 
 RUN \
   apk --no-cache update && apk --no-cache upgrade && \
@@ -11,11 +11,7 @@ RUN \
   geoip-dev expat-dev zlib-dev \
   openssl-dev openssl \
   mariadb-client mariadb-connector-c mariadb-dev \
-  nodejs-npm fontconfig tzdata
-
-#RUN \
-#  echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories-test; \
-#  apk --no-cache --repositories-file /etc/apk/repositories-test add gosu@testing;
+  nodejs-npm fontconfig tzdata su-exec
 
 RUN curl -sfLo /usr/bin/cpanm https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm && chmod a+x /usr/bin/cpanm
 
