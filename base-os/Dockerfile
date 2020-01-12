@@ -19,6 +19,8 @@ RUN curl -sfLo /usr/bin/confd \
    https://github.com/kelseyhightower/confd/releases/download/v0.16.0/confd-0.16.0-linux-amd64 && \
    chmod a+x /usr/bin/confd
 
+RUN cpanm -n Time::Zone
+
 RUN cpanm Devel::CheckLib HTTP::Date LWP::Simple DBI CPAN && rm -fr ~/.cpanm
 
 RUN cpanm -n DBD::mysql && rm -fr ~/.cpanm
