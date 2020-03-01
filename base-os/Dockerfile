@@ -1,7 +1,7 @@
 FROM alpine:3.11
 
 # Cache buster for occasionally resetting the cached images for the yum commands
-ENV LAST_UPDATED 2020-01-12
+ENV LAST_UPDATED 2020-03-01
 
 RUN \
   apk --no-cache update && apk --no-cache upgrade && \
@@ -11,7 +11,8 @@ RUN \
   geoip-dev expat-dev zlib-dev \
   openssl-dev openssl \
   mariadb-client mariadb-connector-c mariadb-dev \
-  nodejs-npm fontconfig tzdata su-exec
+  nodejs-npm yarn \
+  fontconfig tzdata su-exec
 
 RUN curl -sfLo /usr/bin/cpanm https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm && chmod a+x /usr/bin/cpanm
 
