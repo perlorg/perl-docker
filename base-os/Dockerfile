@@ -1,4 +1,21 @@
-FROM alpine:3.11.5
+FROM alpine:3.11.6 as perlbrew
+
+PERL_VERSION 5.30.2
+
+
+RUN \
+  apk --no-cache update && apk --no-cache upgrade && \
+  apk --no-cache add \
+    curl git perl patch \
+    wget make bash build-base
+
+ENV PERLBREW_ROOT /perl5
+
+RUN curl -L https://install.perlbrew.pl | bash
+
+RUN bash -c "source /perl5/etc/bashrc; perlbrew install perl-${PERL_VERSION}"
+
+FROM alpine:3.11.6
 
 # Cache buster for occasionally resetting the cached images for the yum commands
 ENV LAST_UPDATED 2020-03-01
