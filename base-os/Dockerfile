@@ -4,15 +4,17 @@ FROM alpine:3.12.0
 ENV LAST_UPDATED 2020-06-10
 
 RUN \
-  apk --no-cache update && apk --no-cache upgrade && \
-  apk --no-cache add curl git \
+  apk update && \
+  apk -U upgrade --ignore alpine-baselayout && \
+  apk add curl git \
   perl-dev wget make bash build-base \
   jq rsync \
   geoip-dev expat-dev zlib-dev \
   openssl-dev openssl \
   mariadb-client mariadb-connector-c mariadb-dev \
   nodejs-npm yarn \
-  fontconfig tzdata su-exec
+  fontconfig tzdata su-exec && \
+  rm -fr /var/cache/apk
 
 RUN curl -sfLo /usr/bin/cpanm https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm && chmod a+x /usr/bin/cpanm
 
