@@ -3,8 +3,8 @@ type: kubernetes
 name: default
 
 steps:
-- name: docker  
-  image: harbor.ntppool.org/ntppool/drone-kaniko:latest
+- name: docker
+  image: harbor.ntppool.org/ntppool/drone-kaniko:0.8.0-1
   settings:
     dockerfile: base-os/Dockerfile
     context: base-os
