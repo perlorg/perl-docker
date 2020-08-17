@@ -14,7 +14,8 @@ RUN \
   mariadb-client mariadb-connector-c mariadb-dev \
   nodejs-npm yarn \
   fontconfig tzdata su-exec && \
-  rm -fr /var/cache/apk
+  rm -fr /var/cache/apk && \
+  mkdir -p /var/cache/apk
 
 RUN curl -sfLo /usr/bin/cpanm https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm && chmod a+x /usr/bin/cpanm
 
