@@ -47,8 +47,3 @@ RUN npm install -g \
   && chown -R root:root /usr/lib/node_modules && rm -fr ~/.npm
 
 ADD wait-for-it.sh /usr/bin/
-ADD geoipupdate-lite /usr/bin/
-
-#RUN go get -u github.com/jwilder/dockerize
-
-RUN /usr/bin/geoipupdate-lite
