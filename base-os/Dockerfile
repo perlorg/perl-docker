@@ -1,7 +1,7 @@
-FROM alpine:3.13.5
+FROM alpine:3.14.1
 
 # Cache buster for occasionally resetting the cached images for the yum commands
-ENV LAST_UPDATED 2020-08-08
+ENV LAST_UPDATED 2021-08-09
 
 RUN \
   apk update && \
@@ -12,7 +12,7 @@ RUN \
   geoip-dev expat-dev zlib-dev \
   openssl-dev openssl \
   mariadb-client mariadb-connector-c mariadb-dev \
-  nodejs-npm yarn \
+  npm yarn \
   fontconfig tzdata su-exec && \
   rm -fr /var/cache/apk && \
   mkdir -p /var/cache/apk
