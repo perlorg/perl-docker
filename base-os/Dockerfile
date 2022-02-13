@@ -1,13 +1,13 @@
 FROM alpine:3.15.0
 
 # Cache buster for occasionally resetting the cached images for the yum commands
-ENV LAST_UPDATED 2022-01-29
+ENV LAST_UPDATED 2022-02-13
 
 RUN \
   apk update && \
   apk -U upgrade --ignore alpine-baselayout && \
   apk add curl git \
-  perl-dev wget make bash build-base \
+  perl-dev wget make bash zsh build-base \
   jq rsync \
   geoip-dev expat-dev zlib-dev \
   openssl-dev openssl \
