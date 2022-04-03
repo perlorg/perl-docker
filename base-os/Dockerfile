@@ -1,7 +1,7 @@
-FROM alpine:3.15.0
+FROM alpine:3.15.3
 
 # Cache buster for occasionally resetting the cached images for the yum commands
-ENV LAST_UPDATED 2022-02-13
+ENV LAST_UPDATED 2022-04-03
 
 RUN \
   apk update && \
