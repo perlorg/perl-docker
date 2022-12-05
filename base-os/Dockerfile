@@ -37,9 +37,6 @@ RUN cpanm  DBI DBD::mysql; \
     cpanm < /tmp/.modules; rm -fr ~/.cpanm; rm -fr /usr/local/share/man;
 
 # install csso-cli, uglify-js to minimize css and js; "hulk" to compile js templates
-RUN npm config set jobs 1
-# https://stackoverflow.com/questions/52196518/could-not-get-uid-gid-when-building-node-docker
-RUN npm config set unsafe-perm true
 RUN npm install -g \
   hogan.js gulp-cli source-map-support \
   uglify-js \
