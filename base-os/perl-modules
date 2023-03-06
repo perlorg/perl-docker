@@ -11,13 +11,13 @@ DBD::MariaDB
 Data::Dumper
 Data::Transformer
 Data::UUID
+Data::ULID
 DateTime::Format::Duration
 DateTime::Format::Human::Duration
 Digest::SHA
 Email::Date
 Email::Sender
 File::Path
-Gearman::Client
 Geo::IP
 HTML::Entities
 HTML::TagCloud
