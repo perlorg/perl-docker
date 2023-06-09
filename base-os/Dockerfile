@@ -23,11 +23,8 @@ RUN perl -MDBD::mysql -e ''
 
 ADD perl-modules /tmp/.modules
 
-USER root
-
 # install all the cpan stuff we need
-RUN cpanm DBI DBD::mysql; \
-  cpanm < /tmp/.modules; rm -fr ~/.cpanm; rm -fr /usr/local/share/man;
+RUN cpanm < /tmp/.modules; rm -fr ~/.cpanm; rm -fr /usr/local/share/man;
 
 # install csso-cli, uglify-js to minimize css and js; "hulk" to compile js templates
 RUN npm install -g \
@@ -37,3 +34,5 @@ RUN npm install -g \
   && chown -R root:root /usr/lib/node_modules && rm -fr ~/.npm
 
 ADD wait-for-it.sh /usr/bin/
+
+USER root
