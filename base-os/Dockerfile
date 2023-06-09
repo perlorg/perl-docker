@@ -1,27 +1,20 @@
-FROM alpine:3.17.3
+FROM alpine:3.18
 
 # Cache buster for occasionally resetting the cached images for the yum commands
 ENV LAST_UPDATED 2023-02-12
 
-RUN \
-  apk update && \
-  apk -U upgrade --ignore alpine-baselayout && \
-  apk add curl git \
-  perl-dev wget make bash zsh build-base \
-  jq rsync \
-  geoip-dev expat-dev zlib-dev \
-  openssl-dev openssl \
-  mariadb-client mariadb-connector-c mariadb-dev \
-  npm yarn \
-  fontconfig tzdata su-exec && \
-  rm -fr /var/cache/apk && \
-  mkdir -p /var/cache/apk
+# this was necessary for a bit in an earlier Alpine release
+# apk -U upgrade --ignore alpine-baselayout
 
-RUN curl -sfLo /usr/bin/cpanm https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm && chmod a+x /usr/bin/cpanm
+# https://docs.alpinelinux.org/user-handbook/0.1a/Working/apk.html
+COPY apk-world /etc/apk/world
+
+# install from apk-world
+RUN apk add --no-cache
 
 RUN curl -sfLo /usr/bin/confd \
-   https://github.com/kelseyhightower/confd/releases/download/v0.16.0/confd-0.16.0-linux-amd64 && \
-   chmod a+x /usr/bin/confd
+  https://github.com/kelseyhightower/confd/releases/download/v0.16.0/confd-0.16.0-linux-amd64 && \
+  chmod a+x /usr/bin/confd
 
 RUN cpanm Devel::CheckLib HTTP::Date LWP::Simple DBI CPAN && rm -fr ~/.cpanm
 
@@ -33,8 +26,8 @@ ADD perl-modules /tmp/.modules
 USER root
 
 # install all the cpan stuff we need
-RUN cpanm  DBI DBD::mysql; \
-    cpanm < /tmp/.modules; rm -fr ~/.cpanm; rm -fr /usr/local/share/man;
+RUN cpanm DBI DBD::mysql; \
+  cpanm < /tmp/.modules; rm -fr ~/.cpanm; rm -fr /usr/local/share/man;
 
 # install csso-cli, uglify-js to minimize css and js; "hulk" to compile js templates
 RUN npm install -g \
