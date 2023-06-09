@@ -1,3 +1,4 @@
+
 build-base
 cmd:bash
 cmd:git
@@ -47,10 +48,12 @@ perl-text-csv_xs
 perl-time-duration
 
 perl-bit-vector
+perl-compress-raw-bzip2
 perl-datetime-format-builder
 perl-datetime-format-pg
 perl-datetime-format-sqlite
 perl-datetime-format-strptime
+perl-email-date-format
 perl-libwww
 perl-list-moreutils
 perl-lwp-protocol-https

@@ -1,10 +1,8 @@
-FROM alpine:3.18
+FROM alpine:3.17.3
 
 # Cache buster for occasionally resetting the cached images for the yum commands
 ENV LAST_UPDATED 2023-02-12
 
-# this was necessary for a bit in an earlier Alpine release
-# apk -U upgrade --ignore alpine-baselayout
 
 # https://docs.alpinelinux.org/user-handbook/0.1a/Working/apk.html
 COPY apk-world /etc/apk/world
