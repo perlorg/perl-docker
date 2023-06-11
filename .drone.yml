@@ -1,3 +1,4 @@
+---
 kind: pipeline
 type: kubernetes
 name: default
@@ -12,9 +13,14 @@ steps:
     repo: perlorg/base-os
     registry: harbor.ntppool.org
     auto_tag: true
-    tags: SHA7,${DRONE_SOURCE_BRANCH}
+    tags: ${DRONE_SOURCE_BRANCH},SHA7
     cache: true
     username:
       from_secret: harbor_perlorg_username
     password:
       from_secret: harbor_perlorg_password
+---
+kind: signature
+hmac: 36f57dc6dd0802381bd4f9b56a3964aa1461998b8e495426b022f6c6967debb0
+
+...
