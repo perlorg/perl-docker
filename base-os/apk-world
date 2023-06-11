@@ -1,4 +1,3 @@
-
 build-base
 cmd:bash
 cmd:git
@@ -22,7 +21,6 @@ tzdata
 wget
 yarn
 zlib-dev
-
 perl-compress-raw-zlib
 perl-config-simple
 perl-crypt-jwt
@@ -41,17 +39,14 @@ perl-moose
 perl-namespace-clean
 perl-net-dns
 perl-net-ip
-perl-net-ntp
 perl-plack
 perl-template-toolkit
 perl-text-csv_xs
 perl-time-duration
-
 perl-bit-vector
 perl-compress-raw-bzip2
 perl-datetime-format-builder
 perl-datetime-format-pg
-perl-datetime-format-sqlite
 perl-datetime-format-strptime
 perl-email-date-format
 perl-libwww
