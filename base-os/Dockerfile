@@ -30,6 +30,8 @@ RUN npm install -g \
   hogan.js source-map-support \
   uglify-js \
   csso csso-cli \
-  && chown -R root:root /usr/lib/node_modules && rm -fr ~/.npm
+  && rm -fr ~/.npm
+
+#  && chown -R root:root /usr/lib/node_modules && rm -fr ~/.npm
 
 USER root
