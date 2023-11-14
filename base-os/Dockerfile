@@ -3,6 +3,7 @@ FROM alpine:3.18.4
 # Cache buster for occasionally resetting the cached images for the yum commands
 ENV LAST_UPDATED 2023-02-12
 
+ADD wait-for-it.sh /usr/bin/
 
 # https://docs.alpinelinux.org/user-handbook/0.1a/Working/apk.html
 COPY apk-world /etc/apk/world
@@ -26,11 +27,9 @@ RUN cpanm < /tmp/.modules; rm -fr ~/.cpanm; rm -fr /usr/local/share/man;
 
 # install csso-cli, uglify-js to minimize css and js; "hulk" to compile js templates
 RUN npm install -g \
-  hogan.js gulp-cli source-map-support \
+  hogan.js source-map-support \
   uglify-js \
   csso csso-cli \
   && chown -R root:root /usr/lib/node_modules && rm -fr ~/.npm
-
-ADD wait-for-it.sh /usr/bin/
 
 USER root
