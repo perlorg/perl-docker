@@ -16,7 +16,7 @@ RUN curl -sfLo /usr/bin/confd \
 
 RUN cpanm Devel::CheckLib HTTP::Date LWP::Simple DBI CPAN && rm -fr ~/.cpanm
 
-RUN cpanm -n DBD::mysql && rm -fr ~/.cpanm
+RUN cpanm -n https://cpan.metacpan.org/authors/id/D/DV/DVEEDEN/DBD-mysql-4.051.tar.gz && rm -fr ~/.cpanm
 RUN perl -MDBD::mysql -e ''
 
 ADD perl-modules /tmp/.modules

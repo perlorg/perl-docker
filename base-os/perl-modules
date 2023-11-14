@@ -6,7 +6,6 @@ Config::Simple
 Crypt::JWT
 Crypt::OpenSSL::RSA
 DBI
-DBD::mysql
 DBD::MariaDB
 Data::Dumper
 Data::Transformer
