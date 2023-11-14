@@ -13,14 +13,17 @@ steps:
     repo: perlorg/base-os
     registry: harbor.ntppool.org
     auto_tag: true
-    tags: ${DRONE_SOURCE_BRANCH},SHA7
+    tags:
+    - "${DRONE_SOURCE_BRANCH}"
+    - SHA7
     cache: true
     username:
       from_secret: harbor_perlorg_username
     password:
       from_secret: harbor_perlorg_password
+
 ---
 kind: signature
-hmac: 36f57dc6dd0802381bd4f9b56a3964aa1461998b8e495426b022f6c6967debb0
+hmac: 82a2911ad1c27a954ec818bc3a904a94cf5e9774be6b382e6ea5f46d0731dbf2
 
 ...
