@@ -25,19 +25,11 @@ ADD perl-modules /tmp/.modules
 # install all the cpan stuff we need
 RUN cpanm < /tmp/.modules; rm -fr ~/.cpanm; rm -fr /usr/local/share/man;
 
-RUN ls -l /etc/passwd
-
 # install csso-cli, uglify-js to minimize css and js; "hulk" to compile js templates
 RUN npm install -g \
   hogan.js source-map-support \
   uglify-js \
   csso csso-cli \
-  && rm -fr ~/.npm
-
-#  && chown -R root:root /usr/lib/node_modules && rm -fr ~/.npm
-
-RUN ls -l /etc/passwd
+  && chown -R root:root /usr/lib/node_modules && rm -fr ~/.npm
 
 USER root
-
-RUN ls -l /etc/passwd

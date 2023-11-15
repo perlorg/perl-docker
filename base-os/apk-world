@@ -1,3 +1,8 @@
+alpine-baselayout
+alpine-keys
+apk-tools
+busybox
+libc-utils
 build-base
 cmd:bash
 cmd:git
