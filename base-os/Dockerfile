@@ -17,8 +17,12 @@ RUN curl -sfLo /usr/bin/confd \
 
 RUN cpanm Devel::CheckLib HTTP::Date LWP::Simple DBI CPAN && rm -fr ~/.cpanm
 
+# latest versions don't support MySQL 5.7
 RUN cpanm -n https://cpan.metacpan.org/authors/id/D/DV/DVEEDEN/DBD-mysql-4.051.tar.gz && rm -fr ~/.cpanm
 RUN perl -MDBD::mysql -e ''
+
+# tests fail on Alpine because some locale issue that doesn't matter for our use
+RUN cpanm -n Number::Format && rm -fr ~/.cpanm
 
 ADD perl-modules /tmp/.modules
 

@@ -77,7 +77,9 @@ perl-path-class
 perl-path-tiny
 perl-plack
 perl-template-toolkit
+perl-test-deep
 perl-test-failwarnings
+perl-test-needs
 perl-test-nowarnings
 perl-test-warn
 perl-text-csv_xs
