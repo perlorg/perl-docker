@@ -1,4 +1,5 @@
 alpine-baselayout
+alpine-baselayout-data
 alpine-keys
 apk-tools
 busybox
@@ -26,6 +27,7 @@ tzdata
 wget
 yarn
 zlib-dev
+perl-alien-build
 perl-compress-raw-zlib
 perl-config-simple
 perl-crypt-jwt
