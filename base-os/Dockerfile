@@ -1,7 +1,7 @@
-FROM alpine:3.20.2
+FROM alpine:3.20.3
 
 # Cache buster for occasionally resetting the cached images for the yum commands
-ENV LAST_UPDATED 2023-02-12
+ENV LAST_UPDATED 2024-12-01
 
 ADD wait-for-it.sh /usr/bin/
 
