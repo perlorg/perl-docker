@@ -2,9 +2,8 @@ alpine-baselayout
 alpine-baselayout-data
 alpine-keys
 apk-tools
-busybox
-libc-utils
 build-base
+busybox
 cmd:bash
 cmd:git
 cmd:jq
@@ -13,6 +12,8 @@ cmd:zsh
 curl
 expat-dev
 fontconfig
+gomplate
+libc-utils
 mariadb-client
 mariadb-connector-c
 mariadb-dev
@@ -21,12 +22,15 @@ openssl
 openssl-dev
 perl-app-cpanminus
 perl-dev
+postgresql16-client
 rsync
 su-exec
 tzdata
 wget
 yarn
+yq-go
 zlib-dev
+
 perl-alien-build
 perl-bit-vector
 perl-class-accessor-lite
