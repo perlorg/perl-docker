@@ -11,10 +11,6 @@ COPY apk-world /etc/apk/world
 # install from apk-world
 RUN apk add --no-cache
 
-RUN curl -sfLo /usr/bin/confd \
-  https://github.com/kelseyhightower/confd/releases/download/v0.16.0/confd-0.16.0-linux-amd64 && \
-  chmod a+x /usr/bin/confd
-
 RUN cpanm Devel::CheckLib HTTP::Date LWP::Simple DBI CPAN && rm -fr ~/.cpanm
 
 # latest versions don't support MySQL 5.7
