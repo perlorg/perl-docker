@@ -5,6 +5,7 @@ Config::General
 Config::Simple
 Crypt::JWT
 Crypt::OpenSSL::RSA
+Crypt::Passphrase::Bcrypt
 Crypt::Skip32::Base32Crockford
 DBD::MariaDB
 DBD::SQLite
