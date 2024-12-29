@@ -23,7 +23,6 @@ File::Find::Rule
 File::Path
 Geo::IP
 HTML::Entities
-HTML::TagCloud
 HTTP::Date
 HTTP::Parser::XS
 I18N::LangTags
