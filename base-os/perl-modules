@@ -13,6 +13,8 @@ DBI
 Data::Dumper
 Data::Transformer
 Data::ULID
+Crypt::Passphrase::Argon2
+Plack::Middleware::Headers
 Data::UUID
 DateTime::Format::Duration
 DateTime::Format::Human::Duration
@@ -21,6 +23,7 @@ Email::Date
 Email::Sender
 File::Find::Rule
 File::Path
+File::Slurper
 Geo::IP
 HTML::Entities
 HTTP::Date

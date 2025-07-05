@@ -44,6 +44,7 @@ perl-clone
 perl-compress-raw-bzip2
 perl-compress-raw-zlib
 perl-config-simple
+perl-crypt-argon2
 perl-crypt-bcrypt
 perl-crypt-jwt
 perl-crypt-openssl-rsa
@@ -66,6 +67,7 @@ perl-extutils-config
 perl-extutils-installpaths
 perl-ffi-checklib
 perl-file-find-rule
+perl-file-slurper
 perl-future
 perl-future-asyncawait
 perl-http-daemon
