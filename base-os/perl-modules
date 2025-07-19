@@ -62,6 +62,7 @@ Router::Simple
 Starman
 Template
 Template::Plugin::Comma
+Template::Plugin::DateTime
 Template::Plugin::JSON
 Template::Plugin::Number::Format
 Template::Plugin::Time::Duration
