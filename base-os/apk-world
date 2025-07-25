@@ -34,6 +34,7 @@ yq-go
 zlib-dev
 
 mariadb-client-perl
+perl-algorithm-diff
 perl-alien-build
 perl-bit-vector
 perl-class-accessor
@@ -41,6 +42,7 @@ perl-class-accessor-lite
 perl-class-method-modifiers
 perl-class-returnvalue
 perl-clone
+perl-clone-pp
 perl-compress-raw-bzip2
 perl-compress-raw-zlib
 perl-config-simple
@@ -48,6 +50,7 @@ perl-crypt-argon2
 perl-crypt-bcrypt
 perl-crypt-jwt
 perl-crypt-openssl-rsa
+perl-crypt-random-source
 perl-crypt-urandom
 perl-data-dump
 perl-data-uuid
@@ -62,6 +65,9 @@ perl-dbi
 perl-devel-checklib
 perl-email-address-xs
 perl-email-date-format
+perl-email-mime
+perl-email-mime-contenttype
+perl-email-mime-encodings
 perl-email-simple
 perl-extutils-config
 perl-extutils-installpaths
@@ -73,6 +79,8 @@ perl-future-asyncawait
 perl-http-daemon
 perl-http-parser-xs
 perl-io-async
+perl-io-socket-inet6
+perl-io-socket-ip
 perl-json-xs
 perl-libwww
 perl-list-moreutils
@@ -82,6 +90,7 @@ perl-lwp-protocol-https
 perl-math-random-isaac
 perl-metrics-any
 perl-mime-base32
+perl-mime-types
 perl-module-build
 perl-module-build-tiny
 perl-module-find
@@ -93,6 +102,7 @@ perl-namespace-clean
 perl-net-dns
 perl-net-http
 perl-net-ip
+perl-net-mqtt
 perl-net-ntp
 perl-net-server
 perl-number-compare
@@ -100,6 +110,7 @@ perl-path-class
 perl-path-tiny
 perl-plack
 perl-ref-util
+perl-socket6
 perl-syntax-keyword-dynamically
 perl-template-toolkit
 perl-test-deep
@@ -112,7 +123,9 @@ perl-test-refcount
 perl-test-warn
 perl-test-warnings
 perl-text-csv_xs
+perl-text-diff
 perl-text-glob
+perl-text-unidecode
 perl-time-duration
 perl-timedate
 perl-type-tiny
@@ -120,3 +133,4 @@ perl-uri
 perl-uri-encode
 perl-uri-encode-xs
 perl-xs-parse-sublike
+perl-yaml
