@@ -3,7 +3,7 @@ when:
 
 steps:
   - name: generate-tags
-    image: ghcr.io/dvjn/woodpecker-docker-tags-plugin
+    image: ghcr.io/abh/woodpecker-docker-tags-plugin:sha-86e52ce
     settings:
       tags: |
         branch
