@@ -1,4 +1,4 @@
-FROM alpine:3.22.2
+FROM alpine:3.23.3
 
 # Cache buster for occasionally resetting the cached images for the yum commands
 ENV LAST_UPDATED 2024-12-01
