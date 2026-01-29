@@ -1,7 +1,19 @@
 when:
-  - event: [push, pull_request, manual]
+  - event: [push, pull_request, manual, tag]
 
 steps:
+  - name: generate-tags
+    image: ghcr.io/dvjn/woodpecker-docker-tags-plugin
+    settings:
+      tags: |
+        branch
+        sha
+        edge -v latest
+        raw -v build-${CI_PIPELINE_NUMBER}
+        semver --format {{major}}
+        semver --format {{major}}.{{minor}}
+        semver --format {{major}}.{{minor}}.{{patch}}
+
   - name: docker
     image: woodpeckerci/plugin-kaniko
     settings:
@@ -9,10 +21,6 @@ steps:
       context: base-os
       registry: harbor.ntppool.org
       repo: perlorg/base-os
-      auto_tag: true
-      tags:
-        - ${CI_COMMIT_BRANCH}
-        - ${CI_COMMIT_SHA:0:7}
       cache: true
       username:
         from_secret: harbor_perlorg_username
