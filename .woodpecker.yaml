@@ -16,6 +16,8 @@ steps:
 
   - name: docker
     image: woodpeckerci/plugin-kaniko
+    when:
+      - event: [push, tag, manual]
     settings:
       dockerfile: base-os/Dockerfile
       context: base-os

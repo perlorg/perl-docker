@@ -14,7 +14,6 @@ Data::Dumper
 Data::Transformer
 Data::ULID
 Crypt::Passphrase::Argon2
-Plack::Middleware::Headers
 Data::UUID
 DateTime::Format::Duration
 DateTime::Format::Human::Duration
@@ -42,7 +41,6 @@ Net::Async::HTTP::Server
 Net::DNS
 Net::IP
 Net::NTP
-OpenTelemetry
 OpenTelemetry
 OpenTelemetry::Exporter::OTLP
 OpenTelemetry::SDK

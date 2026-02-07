@@ -23,7 +23,7 @@ RUN cpanm -n Number::Format && rm -fr ~/.cpanm
 ADD perl-modules /tmp/.modules
 
 # install all the cpan stuff we need
-RUN cpanm < /tmp/.modules; rm -fr ~/.cpanm; rm -fr /usr/local/share/man;
+RUN cat /tmp/.modules | cpanm && rm -fr ~/.cpanm /usr/local/share/man
 
 # install csso-cli, uglify-js to minimize css and js; "hulk" to compile js templates
 RUN npm install -g \
