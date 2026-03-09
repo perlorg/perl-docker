@@ -43,7 +43,6 @@ Net::IP
 Net::NTP
 OpenTelemetry
 OpenTelemetry::Exporter::OTLP
-OpenTelemetry::SDK
 Plack
 Plack::Handler::Net::Async::HTTP::Server
 Plack::Middleware::AccessLog

@@ -20,6 +20,9 @@ RUN perl -MDBD::mysql -e ''
 # tests fail on Alpine because some locale issue that doesn't matter for our use
 RUN cpanm -n Number::Format && rm -fr ~/.cpanm
 
+# trace_flags serialization bug: https://github.com/jjatria/perl-opentelemetry/pull/25
+RUN cpanm -n OpenTelemetry::SDK && rm -fr ~/.cpanm
+
 ADD perl-modules /tmp/.modules
 
 # install all the cpan stuff we need
