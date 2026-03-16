@@ -23,7 +23,7 @@ openssl
 openssl-dev
 perl-app-cpanminus
 perl-dev
-postgresql17-client
+postgresql18-client
 rsync
 su-exec
 tzdata
